@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+gradlew*
+gradle/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Gradle build outputs
+/build/
+build.gradle
+!*/src/main/**  # Не игнорируем код
+
+
+# Logs & Temp files
+*.log
+*.tmp
+*.swp
+*.swo
+.DS_Store
+
