@@ -12,6 +12,9 @@ public class Cake {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @ManyToOne
+    @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_category_id"))
+    private Category category;
     @Column(name = "name")
     private String name;
     @Column(name = "description")
