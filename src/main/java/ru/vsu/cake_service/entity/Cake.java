@@ -2,11 +2,12 @@ package ru.vsu.cake_service.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 
 @Entity
-@Getter @Setter
+@Getter @Setter @Accessors(fluent = true)
 @NoArgsConstructor @AllArgsConstructor @Builder
 public class Cake {
     @Id
