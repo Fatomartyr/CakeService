@@ -11,6 +11,7 @@ import java.util.List;
 public interface CakeRepository extends JpaRepository<Cake, Long> {
     @Query("SELECT c FROM Cake c WHERE c.name = :name")
     List<Cake> findCakesByName(String name);
-    @Query("SELECT c FROM Cake c where c.category.id = :categoryId")
-    List<Cake> findCakesByCategory(Long categoryId);
+
+    @Query("SELECT c FROM Cake c where c.category.name = :name")
+    List<Cake> findCakesByCategory(String name);
 }
