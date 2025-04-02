@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend/
+    environment:
+      POSTGRES_HOST: "postgres_db"
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "CakeServiceDB"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "CakeServiceDB"
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres_db
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres_db

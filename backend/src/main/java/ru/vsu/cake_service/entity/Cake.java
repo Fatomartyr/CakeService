@@ -3,6 +3,7 @@ package ru.vsu.cake_service.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 

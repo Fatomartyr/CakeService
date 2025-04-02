@@ -1,10 +1,11 @@
 package ru.vsu.cake_service.service;
 
-import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.vsu.cake_service.dto.CakeDTO;
 import ru.vsu.cake_service.entity.Cake;
+import ru.vsu.cake_service.exception.cake_exceptions.CakeNotFoundException;
 import ru.vsu.cake_service.repository.CakeRepository;
 
 import java.util.List;
@@ -14,7 +15,8 @@ import java.util.List;
 public class CakeService {
     private final CakeRepository cakeRepository;
 
-    public Cake create(CakeDTO dto) {
+
+    public Cake create(@Valid CakeDTO dto) {
         Cake cake = Cake.builder()
                 .name(dto.name())
                 .description(dto.description())
@@ -39,7 +41,7 @@ public class CakeService {
         return cakeRepository.findCakesByCategory(name);
     }
 
-    public Cake update(Long id, CakeDTO dto) {
+    public Cake update(Long id, @Valid CakeDTO dto) {
         return cakeRepository.findById(id)
                 .map(cake -> cake
                         .name(dto.name())
@@ -50,12 +52,12 @@ public class CakeService {
                         .filling(dto.filling())
                         .imageUrl(dto.imageUrl()))
                 .map(cakeRepository::save)
-                .orElseThrow(() -> new EntityNotFoundException("Cake not found with id: " + id));
+                .orElseThrow(() -> new CakeNotFoundException("Cake not found with id: " + id));
     }
 
     public void delete(Long id) {
         Cake cake = cakeRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Cake not found with id: " + id));
+                .orElseThrow(() -> new CakeNotFoundException("Cake not found with id: " + id));
         cakeRepository.delete(cake);
     }
 

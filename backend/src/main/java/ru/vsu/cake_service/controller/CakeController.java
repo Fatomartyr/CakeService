@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("cakes")
 public class CakeController {
     private final CakeService cakeService;
 
@@ -24,23 +25,23 @@ public class CakeController {
         return ResponseEntity.ok(cakeService.readAll());
     }
 
-    @GetMapping
+    @GetMapping("/by-name")
     public ResponseEntity<List<Cake>> findCakesByName(@RequestParam String name) {
         return ResponseEntity.ok(cakeService.findCakesByName(name));
     }
 
-    @GetMapping
+    @GetMapping("/by-category")
     public ResponseEntity<List<Cake>> findCakesByCategory(@RequestParam String name) {
         return ResponseEntity.ok(cakeService.findCakesByCategory(name));
     }
 
-    @PutMapping
-    public ResponseEntity<Cake> update(@RequestParam Long id, @RequestBody CakeDTO dto) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Cake> update(@PathVariable Long id, @RequestBody CakeDTO dto) {
         return ResponseEntity.ok(cakeService.update(id, dto));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> delete(@RequestParam Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         cakeService.delete(id);
         return ResponseEntity.noContent().build();
     }
