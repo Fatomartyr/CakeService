@@ -10,3 +10,6 @@ gradle/
 # Gradle build outputs
 /backend/build/
 /backend/.gradle/
+
+# Application configuration
+backend/src/main/resources/application.yml

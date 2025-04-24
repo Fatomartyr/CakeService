@@ -29,6 +29,6 @@ public class Cake {
     private String filling;
     @Column(name = "topping")
     private String topping;
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "image")
+    private byte[] image;
 }
