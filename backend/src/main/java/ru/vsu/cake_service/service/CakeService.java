@@ -24,7 +24,7 @@ public class CakeService {
                 .weight(dto.weight())
                 .topping(dto.topping())
                 .filling(dto.filling())
-                .imageUrl(dto.imageUrl())
+                .image(dto.image())
                 .build();
         return cakeRepository.save(cake);
     }
@@ -50,7 +50,7 @@ public class CakeService {
                         .weight(dto.weight())
                         .topping(dto.topping())
                         .filling(dto.filling())
-                        .imageUrl(dto.imageUrl()))
+                        .image(dto.image()))
                 .map(cakeRepository::save)
                 .orElseThrow(() -> new CakeNotFoundException("Cake not found with id: " + id));
     }

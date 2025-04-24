@@ -14,6 +14,6 @@ public record CakeDTO(
         BigDecimal weight,
         @NotBlank(message = "Filling cannot be empty") String filling,
         String topping,
-        String imageUrl
+        byte[] image
 ) {
 }
