@@ -3,7 +3,7 @@ LABEL authors="Nikita Agafonov"
 
 EXPOSE 8080
 
-WORKDIR /CakeService/backend/
+WORKDIR /backend/
 
 COPY ./gradle/ ./gradle/
 COPY build.gradle gradlew ./
@@ -12,4 +12,4 @@ RUN ./gradlew dependencies --no-daemon
 
 COPY . .
 RUN ./gradlew clean build --no-daemon
-CMD ["java", "-jar", "build/libs/CakeService.jar"]
+CMD ["java", "-jar", "build/libs/backend.jar"]
