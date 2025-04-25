@@ -27,4 +27,5 @@ dependencies {
 	compileOnly("org.projectlombok:lombok:1.18.38")
 	annotationProcessor("org.projectlombok:lombok:1.18.38")
 	implementation ("org.springframework.boot:spring-boot-starter-validation")
+	implementation group: 'org.telegram', name: 'telegrambots', version: '6.9.7.1'
 }
